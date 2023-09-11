@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  opencv-gpu-container:
+    image: opencv-gpu
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            count: all
+            capabilities: [gpu]
+    stdin_open: true
+    tty: true
+
