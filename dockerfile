@@ -2,7 +2,6 @@ FROM nvidia/cuda:11.1.1-cudnn8-devel-ubuntu20.04
 
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
-ARG OPENCV_VERSION=4.5.0
 
 RUN apt-get update && \
     apt-get install -y software-properties-common && \
@@ -25,37 +24,42 @@ RUN apt-get update && \
 
 RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y \
-        build-essential \
-        cmake \
-        git \
-        wget \
-        unzip \
-        yasm \
-        pkg-config \
-        libswscale-dev \
-        libtbb2 \
-        libjpeg-dev \
-        libpng-dev \
-        libtiff-dev \
-        libavformat-dev \
-        libpq-dev \
-        libxine2-dev \
-        libglew-dev \
-        libtiff5-dev \
-        zlib1g-dev \
-        libavcodec-dev \
-        libavutil-dev \
-        libpostproc-dev \
-        libeigen3-dev \
-        libgtk2.0-dev \
-        python3-dev \
-        python3-numpy \
-        libgtk-3-dev \
-        libgtkglext1-dev \
-        libavresample-dev \
-        libgstreamer1.0-dev \
-        libgstreamer-plugins-base1.0-dev \
-        libdc1394-22-dev \
+    build-essential \
+    cmake \
+    git \
+    wget \
+    unzip \
+    yasm \
+    pkg-config \
+    libswscale-dev \
+    libtbb2 \
+    libjpeg-dev \
+    libpng-dev \
+    libtiff-dev \
+    libavformat-dev \
+    libpq-dev \
+    libxine2-dev \
+    libglew-dev \
+    libtiff5-dev \
+    zlib1g-dev \
+    libavcodec-dev \
+    libavutil-dev \
+    libpostproc-dev \
+    libeigen3-dev \
+    libgtk2.0-dev \
+    python3-dev \
+    python3-numpy \
+    libgtk-3-dev \
+    libgtkglext1-dev \
+    libavresample-dev \
+    libgstreamer1.0-dev \
+    libgstreamer-plugins-base1.0-dev \
+    libdc1394-22-dev
+
+WORKDIR /app
+COPY opencv_contrib-4.5.3 /app/opencv_contrib-4.5.3
+COPY opencv-4.5.3 /app/opencv-4.5.3
+RUN mkdir /app/opencv-4.5.3/build
 
 # RUN cd opencv-{$OPENCV_VERSION}/build && \
 # cmake .. \

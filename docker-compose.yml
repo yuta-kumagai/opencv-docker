@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   opencv-gpu-container:
@@ -10,9 +10,8 @@ services:
       resources:
         reservations:
           devices:
-          - driver: nvidia
-            count: all
-            capabilities: [gpu]
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
     stdin_open: true
     tty: true
-
